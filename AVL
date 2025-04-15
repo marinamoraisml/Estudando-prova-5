@@ -18,7 +18,36 @@ public Node checkBalance(Node node){
   while(aux != nulll){
     if(!aux.isBalanced()){
       return aux;
+}  else if (aux.parent != null)
+      aux = aux.parent;
+}  else{
+      break;
+}
+}
+return null;
+}
 
+private void rebalance(Node node){
+  int balance = node.balance();
+  if(Math.abs(balance) > 1){
+    callBestRotation(node);
+}
+}
+
+public void callBestRotation(Node unbalanced){
+  Node x = unbalanced;
+
+  if(x.isLeftPending(){
+    Node y = x.left;
+
+    if(y.left != null) rotateRight(x);
+    else{
+      rotateLeft(y); rotateRight(x);
+}
+}
+    els
+
+}
 
 
 
