@@ -1,0 +1,89 @@
+#Código AVL
+
+public class AVL{
+  private Node root;
+  private int size;
+
+public AVL({
+  this.size = -1;
+}
+
+public boolean isEmpty(){
+  return this.root == null;
+}
+
+public Node checkBalance(Node node){
+  Node aux = node;
+
+  while(aux != nulll){
+    if(!aux.isBalanced()){
+      return aux;
+
+
+
+
+class Node {
+  int value;
+  int height;
+  Node left;
+  Node right;
+  Node parent;
+
+  Node(int v){
+    this.value = v;
+    this.height = 0;
+}
+
+  public boolean hasOnlyLeftChild(){
+    return(this.left != null && this.right == null);
+}
+
+  public boolean hasOnlyRightChild(){
+    return(this.left == null && this.right != null);
+}
+
+  public boolean isLeaf(){
+    return(this.left == null && this.right == null);
+}
+
+  public int height(){
+    if(this.left == null && this.right == null)
+      return 0;
+    else if (this.left == null){
+      return 1 + this.right.height();
+    } else if (this.right null)
+      return 1 + this.left.height();
+    } else {
+        return 1 + max(this.left.height(), this.right.height());
+}
+}
+
+  private int max(int height1, int height2){
+    if(height 1 >= height2)
+      return height1;
+    return height2;
+}
+
+  public int balance(){
+    int left = this.left == null ? -1 : this.left.height();
+    int right = this.right == null ? -1 : this.right.height();
+    return left - right;
+}
+
+  public boolean isLeftPending(){
+    int left = this.left == null ? -1 : this.left.height();
+    int right = this.roght == null ? -1 : this.right.height();
+    return left - right >= 1;
+}
+  public boolean isRightPending(){
+     int left = this.left == null ? -1 : this.left.height();
+    int right = this.roght == null ? -1 : this.right.height();
+    return left - right <= -1;
+}
+
+  public boolean isBalanced(){
+     int left = this.left == null ? -1 : this.left.height();
+    int right = this.roght == null ? -1 : this.right.height();
+    return left - right >= -1 && left - right <= 1;
+}
+}
