@@ -1,0 +1,62 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.beans.Transient;
+import java.nio.file.NotDirectoryException;
+
+import org.junit.jupiter.api.Test;
+
+public class BSTTest {
+    @Test
+    public void checaCores(){
+        Node n = new Node(6, true);
+        BST bst = new BST();
+
+        bst.addNode(n);
+
+        //false pois a raíz deve ser preta
+        assertFalse(bst.checaCores());
+
+        // atualiza valor da raiz para que respeite a regra
+        n.isRed = false;
+        assertTrue(bst.checaCores());
+
+        // adiciona dois nós vermelhos
+        Node n3 = new Node(3, true);
+        Node n9 = new Node(9, true);
+        bst.addNode(n3);
+        bst.addNode(n9);
+        assertTrue(bst.checaCores());
+
+        // adiciona nós que são filhos de n3
+        // como 4 é vermelho, vai dar errado
+        Node n2 = new Node(2, false);
+        Node n4 = new Node(4, true);
+        bst.addNode(n2);
+        bst.addNode(n4);
+
+        assertFalse(bst.checaCores());
+
+        // atualizando cor de n4 para que as cores chequem
+        n4.isRed = false;
+
+        assertTrue(bst.checaCores());
+
+        // adiciona nós que serão filhos de 9 (vermelho)
+        Node n7 = new Node(7, false);
+        Node n20 = new Node(20, true);
+        bst.addNode(n7);
+        bst.addNode(n20);
+        
+        assertFalse(bst.checaCores());
+
+        //filho à esquerda de 20
+        Node n15 = new Node(15, true);
+        bst.addNode(n15);
+        
+        assertFalse(bst.checaCores());
+
+        n4.isRed = true;
+        assertFalse(bst.checaCores());
+    }
+
+}
