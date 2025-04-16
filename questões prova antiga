@@ -11,17 +11,17 @@ public class BST {
     * true se os nós respeitam as restrições de cores e
     * false caso contrário.
     */
-    public boolean checaCores() {
-        if(isEmpty()) return true;
-        if(this.root.isRed) return false;
-        return checaCores(this.root);
+   public boolean checaCores(){
+     if(isEmpty()) return true;
+     if(this.root.isRed) return false
+     return checaCores(this.root);
     }
 
     private boolean checaCores(Node node){
         if(node == null) return true;
         if(node.isRed && node.parent.isRed) return false;
         return checaCores(node.left) && checaCores(node.right);
-    }
+}
 
 
    public void fixTree(Node node) {
