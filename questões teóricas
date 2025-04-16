@@ -1,0 +1,62 @@
+AVL-01) Explique o que e uma arvore AVL e qual e a sua principal vantagem em relacao a arvore
+binaria de busca (BST) tradicional.
+  Uma AVL é uma árvore binária de busca, porém tem o fator balanceamento que a torna sempre uma árvore balanceada após operações. A principal vantagem dela decorre do balanceamento pois faz com que a altura seja sempre O(log n) mantendo as operações eficientes.
+AVL-02) Defina o conceito de 'balance' em uma arvore AVL. O que representa o valor balance = -1,
+0 ou 1 para um no?
+  Balance é a diferença entre a altura da subárvore à esquerda e a altura da subárvore a direita. O valor -1 representa que o nó está balanceado porém pendendo para a direita, o 1 significa que ta pendendo para a esquerda e o 0 está perfeitamente balanceado.
+AVL-03) Uma sequencia de insercoes ordenadas em uma arvore binaria de busca pode levar a um
+desbalanceamento. Como a arvore AVL evita esse comportamento?
+  Através das rotações. Essas rotações são feitas após alguma operação desbalancear a árvore, fazendo com que o balance sempre esteja entre 1 e -1.
+AVL-04) Explique o que sao as rotacoes simples e duplas nas arvores AVL. De exemplo dos 4
+casos: LL, LR, RR, RL.
+  LL : o nó foi inserido na esquerda do filho esquerdo então precisa de uma rotação simples para a direita, LR: o novo nó foi inserido a direita do do filho esquerdo então precisa de uma rotação dupla, primeiro para esquerda e depois para a direita; RR: o novo nó foi inserido à direita de um nó que é filho direito então é feito uma rotação simples para esquerda; RL: o novo nó foi inserido á esquerda de um filho direito, então é preciso fazer uma rotação dupla primeiro para direita e depois para esquerda
+AVL-05) Considere um no com subarvore a esquerda de altura 3 e subarvore a direita de altura 1.
+Essa arvore esta balanceada segundo os criterios da AVL? Justifique.
+  Não pois o balance é 2
+
+Arvore B
+B-01) Defina uma arvore B de ordem m. Quais sao as principais restricoes impostas aos nos
+internos dessa arvore?
+  Os nós tem um número máximo de filhos igual a m, um número mínimo de filho igual m/2, exceto a raiz, um número máximo de chaves em um nó igual a k = m-1 e um número mínimo igual m/2 -1.
+B-02) Compare as arvores B com as arvores binarias de busca em termos de profundidade e
+numero de acessos ao disco. Por que a arvore B e preferida em sistemas de banco de dados?
+  As árvores B vão ter menor profundidade, o que vai reduzir o número de acesso ao disco, são preferidas pois precisam acessar menos o disco e acesso ao disco é caro
+B-03) O que acontece quando ocorre overflow em um no da arvore B? Explique o processo de split
+e como ele afeta a estrutura da arvore.
+  Quando acontece o overflow ou seja o número máximo de chaves de um nó excede o limite m-1 acontece o split, que faz com que a chave do meio (mediana) sobe para o pai, e as demais formam dois novos nó um a esquerda e outro a direita, para garantir que tenha espaço para novas chaves.
+B-04) Considere uma arvore B de ordem 5. Qual o numero minimo e maximo de chaves que um no
+interno pode conter?
+  m = 5
+  min = (m/2) -1 = 2
+  max = k = m -1 = 4
+B-05) Quais sao as principais diferencas entre arvore B e arvore B+? Em que contexto o uso da B+
+e preferido?
+  Na árvore B+, todos os dados estão armazenados apenas nas folhas e estas são encadeadas entre si. Isso facilita buscas sequenciais e torna a árvore mais eficiente em consultas em intervalos.
+
+Arvore Vermelho-Preto (PV)
+PV-01) Defina o que e uma arvore vermelho-preto. Quais sao as cinco propriedades fundamentais
+que ela deve satisfazer?
+  Cada nó é preto ou vermelho, a raiz é preta, nó vermelho não pode ter filho vermelho, todas as folhas(nil) são pretas, todo caminho da raiz até uma folha contém o mesmo número de nós pretos
+PV-02) Qual o papel das cores nos nos de uma arvore PV? Como elas influenciam no
+balanceamento?
+  As cores impõem regras que vão limitar o desbalanceamento. As regras garantem que caminhos mais longos não sejam mais que o dobro dos mais curtos, mantendo a altura em logn e evitando longos ramos de um lado.
+PV-03) Explique por que uma arvore vermelho-preto garante altura logaritmica, mesmo nao sendo
+perfeitamente balanceada como a AVL.
+  Mesmo não sendo perfeitamente balanceada como a AVL a pv garanate a altura log pois as regras das corem controlam o desbalanceamento excessivos
+PV-04) Descreva os casos de rotacao necessarios apos a insercao de um no vermelho que viole as
+propriedades da arvore PV.
+  Rotação vai ser necessária quando um novo nó vermelho é inserido como filho de um nó vermelho
+PV-05) A arvore PV permite dois nos vermelhos consecutivos? Justifique com base nas
+propriedades da estrutura.
+
+Caso 1 – Tio é vermelho (recoloração)
+Pai e Tio de z são vermelhos
+
+Avô é preto
+
+📌 Solução:
+
+Recolore: pai e tio viram pretos, avô vira vermelho
+
+Pode causar problema para cima → aplica correção recursiva no avô]
+Resultado: y e tio ficam pretos, x vira vermelho
