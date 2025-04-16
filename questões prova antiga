@@ -26,21 +26,24 @@ public class BST {
 
    public void fixTree(Node node) {
       if(node == null) return;
-      if(isLeftPending(node))
-        Node y = node.left;
-        if(y.left != null)
-          rotateRight(node)
+      if(isLeftPending(node)){
+        Node x = node.left;
+        if(x.left != null)
+          rotateRight(node);
         else {
-          rotateLeft(y); rotateRight(node);
+          rotateLeft(x);
+          rotateRight(node);
           }
-      if(isRightPending(node))
-        Node y = node.right;
-        if(y.right != null)
-          rotateLeft(node);
-        else {
-          rotateRight(y); rotateLeft(node)
+      } else {
+            Node x = node.right;
+            if(x.right != null)
+              rotateLeft(node);
+            else {
+              rotateRight(x);
+              rotateLeft(node);
       }
-    } 
+    }
+}
 
   public boolean isLeftPending(Node node){
     return node.hasOnlyLeftChild();
