@@ -12,18 +12,26 @@ public class BST {
     * false caso contrário.
     */
     public boolean checaCores() {
-        
-        return false;
+        if(isEmpty()) return true;
+        if(this.root.isRed) return false;
+        return checaCores(this.root);
+    }
+
+    private boolean checaCores(Node node){
+        if(node == null) return true;
+        if(node.isRed && node.parent.isRed) return false;
+        return checaCores(node.left) && checaCores(node.right);
     }
 
 
    public void fixTree(Node node) {
+      if(node == null) return;
       if(isLeftPending(node))
         Node y = node.left;
         if(y.left != null)
           rotateRight(node)
         else {
-          rotateLeft(y),; rotateRight(node);
+          rotateLeft(y); rotateRight(node);
           }
       if(isRightPending(node))
         Node y = node.right;
